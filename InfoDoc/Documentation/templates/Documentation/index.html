@@ -1,0 +1,35 @@
+{% extends 'main.html' %} {% load static %}
+
+
+
+{% block content %}
+<img
+  src="{% static 'img/logo.png' %}"
+  alt="Logo image"
+  style="width: 350px"
+  class="center"
+/>
+<div class="tm-hero d-flex justify-content-center align-items-top">
+  <form
+    class="d-flex tm-search-form"
+    action="{% url 'getContent' %}"
+    method="get"
+  >
+    <input
+      class="form-control tm-search-input"
+      type="search"
+      placeholder="Enter tool name here.."
+      aria-label="Search"
+      name="search_query"
+    />
+    <button class="btn btn-outline-primary tm-search-btn" type="submit">
+      <i class="fas fa-search"></i>
+    </button>
+  </form>
+</div>
+
+{% endblock %}
+
+
+
+

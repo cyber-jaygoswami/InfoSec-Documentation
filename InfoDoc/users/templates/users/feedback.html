@@ -1,0 +1,38 @@
+{% extends 'main.html' %} {% load static %} {% block content %}
+
+<section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img src="{% static 'img/logo.png' %}" class="img-fluid" alt="Sample image" />
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form method="post" action="">
+            {% csrf_token %}
+         
+                <div class="form-outline mb-4">
+                  
+                {% for field in form %}
+                {{field.label}}
+                {{field}}
+                {% endfor %}
+                </div> 
+      
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <input
+                type="submit"
+                class="btn btn-primary btn-lg"
+                style="padding-left: 2.5rem; padding-right: 2.5rem"
+                value="Submit">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+  <br>
+  <br>
+
+
+{% endblock content%}

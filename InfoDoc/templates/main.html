@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfoSec Documentation </title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %} " type="image/x-icon" />
+
+    <link rel="stylesheet" href="{% static 'style/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'style/templatemo-style.css' %}">
+    <link rel="stylesheet" href="{% static 'style/extra.css' %}">
+
+</head>
+<body>
+    
+    {% include 'navbar.html' %}
+
+    <!-- Message section -->
+
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+            {% if message.tags == "error"%}
+            <div {% if message.tags %} class="alert alert-danger " {% endif %}>
+                {{ message }}
+            </div>
+
+
+            {% else %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }} " {% endif %}>
+            {{ message }}
+            </div>
+
+            {% endif %}
+        
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <!-- <div class="alert alert-primary" role="alert">
+        A simple primary alert—check it out!
+      </div> -->
+      
+    {% block content %}
+    
+
+    {% endblock content %}
+
+
+    {% include 'footer.html' %}
+   
+    
+</body>
+</html>
