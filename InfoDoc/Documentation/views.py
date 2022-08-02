@@ -17,8 +17,11 @@ def aboutPage(request):
 def getContent(request):
     search_query = request.GET.get('search_query')
     # print(search_query)
-
+    if search_query == "":
+        messages.info(request,"Enter tool name in search bar ")
+        return redirect('homePage')
     try:
+        
         content = Description.objects.get(tool_name=search_query)
         # print(content.id)
         commands = Command.objects.filter(tool=content.id)

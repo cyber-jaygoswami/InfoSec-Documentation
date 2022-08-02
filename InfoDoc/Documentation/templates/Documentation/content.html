@@ -19,7 +19,7 @@
 <div class="container" style="border: 1px solid grey; border-radius: 10px">
   <h1 align="center">Commands</h1>
   <hr />
-
+  {% if commands %}
   <div class="tm-mt-60">
     {% for command in commands%}
     <div class="tm-mt-25">
@@ -33,7 +33,12 @@
     </div>
     {% endfor %}
   </div>
+
+  {% else %}
+  <p>Commands not available for this tool</p>
+  {% endif %}
 </div>
+
 
 {% endblock content %}
 
