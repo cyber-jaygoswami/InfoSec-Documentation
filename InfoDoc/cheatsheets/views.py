@@ -17,7 +17,7 @@ def uploadPage(request):
     user = request.user.username    
     form = UploadFile(user)
     if request.method == "POST":
-        form = UploadFile(request.POST, request.FILES)
+        form = UploadFile(user,request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('downloadPage')
