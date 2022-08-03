@@ -1,21 +1,25 @@
 from .models import PdfFile
 from django.forms import ModelForm
 
+
 class UploadFile(ModelForm):
     class Meta:
         model = PdfFile
         fields = '__all__'
         labels = {
-            'pdf_file':'File'
+            'pdf_file': 'File'
         }
-    
-    def __init__(self,*args,**kwargs):
-        super(UploadFile,self).__init__(*args,**kwargs)
 
-        for name,field in self.fields.items():
+    def __init__(self,username, *args, **kwargs):
+        super(UploadFile, self).__init__(*args, **kwargs)
+
+        for name, field in self.fields.items():
             if not name == 'pdf_file':
-                field.widget.attrs.update({'class':'form-control form-control-lg'})
+                field.widget.attrs.update(
+                    {'class': 'form-control form-control-lg'})
             else:
-                 field.widget.attrs.update({'accept':'.pdf'})
+                field.widget.attrs.update({'accept': '.pdf'})
 
-            
+            if name == "username":
+                field.widget.attrs.update({'value': username })
+                field.widget.attrs.update({'readonly' : 'true'})

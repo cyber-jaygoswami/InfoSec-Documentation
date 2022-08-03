@@ -14,14 +14,14 @@ def downloadPage(request):
 
 @login_required(login_url='login')
 def uploadPage(request):
-    form = UploadFile()
+    user = request.user.username    
+    form = UploadFile(user)
     if request.method == "POST":
-        pass
         form = UploadFile(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('downloadPage')
-        
 
-    context = {'form': form}
+    print(user)
+    context = {'form': form,'user':user}
     return render(request, 'cheatsheets/uploadPage.html', context)
