@@ -26,8 +26,14 @@ class FeedbackForm(ModelForm):
             'feedback_user':'Feedback'
         }
 
-    def __init__(self,*args,**kwargs):
+    def __init__(self,username,email,*args,**kwargs):
         super(FeedbackForm,self).__init__(*args,**kwargs)
 
         for name,field in self.fields.items():
             field.widget.attrs.update({'class':'form-control form-control-lg'})
+            if name == "name":
+                field.widget.attrs.update({'value': username})
+                field.widget.attrs.update({'readonly' : 'true'})
+            if name == "email":
+                field.widget.attrs.update({'value': email })
+                field.widget.attrs.update({'readonly' : 'true'})

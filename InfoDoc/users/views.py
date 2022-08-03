@@ -66,10 +66,13 @@ def registerUser(request):
 
 @login_required(login_url='login')
 def feedbackUser(request):
-    form = FeedbackForm()
+    user = request.user.username
+    mail = request.user.email
+    print(user,mail)
+    form = FeedbackForm(user,mail)
 
     if request.method == "POST":
-        form = FeedbackForm(request.POST)
+        form = FeedbackForm(user,mail, request.POST)
         if form.is_valid():
             form.save()
             messages.info(request,"We got your response but we don't believe in democracy 😈")
