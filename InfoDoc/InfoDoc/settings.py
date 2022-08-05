@@ -84,6 +84,7 @@ WSGI_APPLICATION = 'InfoDoc.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'PORT':"3307",
         'NAME': 'infodoc',
         'USER':'root',
         'PASSWORD':'clear2cut',
