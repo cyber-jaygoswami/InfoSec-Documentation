@@ -23,19 +23,30 @@
                 <a class="nav-link nav-link-3" href="{% url 'aboutPage' %}">About</a>
             </li>
 
+            
+
             {% if user.is_authenticated %}
+            {%if user.is_superuser %}
             <li class="nav-item">
-                <a class="nav-link nav-link-4" href="{% url 'logout' %}">Logout</a>
+                <a class="nav-link nav-link-4" href="/admin">Admin</a>
             </li>
+            {% else %}
             <li class="nav-item">
                 <a class="nav-link nav-link-4" href="{% url 'feedback' %}">Feedback</a>
             </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link nav-link-4" href="{% url 'logout' %}">Logout</a>
+            </li>
+            
             
             {% else %}
             <li class="nav-item">
                 <a class="nav-link nav-link-4" href="{% url 'login' %}">Login/Register</a>
             </li>
             {% endif %}
+
+            
         </ul>
         </div>
     </div>
